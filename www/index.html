@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<!--
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License.
+-->
+<html>
+<head>
+  <!--
+  Customize this policy to fit your own app's needs. For more guidance, see:
+  https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
+  Some notes:
+  * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+  * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+  * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+  * Enable inline JS: add 'unsafe-inline' to default-src
+-->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
+<meta name="format-detection" content="telephone=no">
+<meta name="msapplication-tap-highlight" content="no">
+<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+<!-- Font CSS -->
+<link href="3rdparty/css/roboto.css" rel="stylesheet">
+<!-- Custom CSS -->
+<link href="css/index.css" rel="stylesheet">
+<title>Hello World</title>
+</head>
+<body>
+  <div id="vue-app">
+    <div id="main-display">
+      <div id="bottom-tab-container" class="bottom-tab-container">
+        <div class="tab" v-for="(view, index) in views"
+          v-bind:class="{ active: index == activeView }"
+          v-on:click="activeView = index">
+          <img class="icon" v-bind:src="view.icon">
+        </div>
+      </div>
+      <div id="filesView" class="content-container scrollable"
+        v-show="views[activeView].id == 'filesView'">
+        <div class="floating-button" v-on:click="refreshFiles()"><img class="icon" src="img/icons/ic_print_white_24px.svg"></div>
+          <div class="scrollable-view">
+            <div id="filesList" class="card-list">
+              <div class="card" style="height:200px;"> </div>
+              <div class="card" style="height:200px;"> </div>
+              <div class="card" style="height:200px;"> </div>
+            </div>
+          </div>
+      </div>
+      <div id="settingsView" class="content-container"
+        v-show="views[activeView].id == 'settingsView'">
+        SettingsView
+      </div>
+    </div>
+  </div>
+  <!-- /#wrapper -->
+  <!-- VUE JavaScript -->
+  <script src="3rdparty/js/vue.js"></script>
+
+  <script src="3rdparty/js/fastclick.js"></script>
+
+  <script src="3rdparty/js/overthrow.js"></script>
+
+  <script src="js/utils.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/init.js"></script>
+  <!-- cordova -->
+  <script src="cordova.js"></script>
+
+
+</body>
+</html>
