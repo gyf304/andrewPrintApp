@@ -7,9 +7,9 @@ function openFile (e)
     var file = e.target.files[0];
     // creating devices
     var socket = 
-      new engine.devices.WebSocket({
-        host: 'localhost',
-        port: 8765
+      new engine.devices.TcpSocket({
+        host: 'printing.andrew.cmu.edu',
+        port: 515
       });
     var lpr = 
       new engine.devices.Lpr({

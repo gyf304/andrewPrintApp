@@ -8,7 +8,6 @@ function onDeviceReady() {
     console.log('fastclick attached')
 }
 
-/*
 window.handleOpenURL = function (url) {
     window.resolveLocalFileSystemURI (
         url,
@@ -31,4 +30,3 @@ window.handleOpenURL = function (url) {
         }
     )
 };
-*/

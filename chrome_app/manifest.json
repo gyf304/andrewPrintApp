@@ -1,0 +1,29 @@
+{
+  "name": "Andrew Printing (preAlpha)",
+  "description": "",
+  "version": "0.1",
+  "manifest_version": 2,
+  "app": {
+    "background": {
+      "scripts": ["background.js"]
+    }
+  },
+  "permissions": [
+    "storage"
+  ],
+  "sockets": {
+    "udp": {
+      // Permission for chrome.sockets.udp.send:
+      // The application is allowed to send udp packets
+      // to any host:port combination.
+      "send": "*"
+    },
+    "tcp": {
+      // Permission for chrome.sockets.tcp.connect:
+      // The application is allowed to connect only to the
+      // tcp server on 127.0.0.1 port 80.
+      "connect": "*"
+    }
+  },
+  "icons": { "16": "icon/printer16.png", "128": "icon/printer128.png" }
+}
